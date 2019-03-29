@@ -1,0 +1,51 @@
+<html>
+    <head>
+        <title>_SEARCHER_</title>
+        <meta charset="UTF-8">
+        <script type="text/javascript" src="logic.js"></script>
+
+        <link rel="stylesheet" href="styles.css">
+    </head>
+    <body>
+        <form>
+            <label for="img">Полное изображение</label>
+            <br>
+            <input id="img" type="file" name="img" accept="image/jpeg"><br>
+            <br>
+            <div id="preview_img"></div>
+            <br><br>
+            <label for="templ">Часть изображения для поиска</label>
+            <br>
+            <input id="templ" type="file" name="templ" accept="image/jpeg"><br>
+            <br>
+            <div id="preview_templ"></div>
+            <br><br>
+            <br>
+            <input id="mpi" type="text" name="mpi"><br>
+            <br>
+            <input type="button" onclick="solve();" value="решить">
+            <input type="button" onclick="reset();" value="сбросить">
+        </form>
+
+        <br><br><br>
+        <div id="progress" class="lds-spinner"><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div><div></div></div>
+        <br><br>
+
+        Решение:
+        <br>
+        <img id="solution" /><br>
+        Время: <span id="time"></span>
+
+        <script>
+            toggleProgress();
+
+            document.querySelector('#img').addEventListener('change', function() {
+                loadImg(this.files[0], "preview_img")
+            });
+
+            document.querySelector('#templ').addEventListener('change', function() {
+                loadImg(this.files[0], "preview_templ")
+            });
+        </script>
+    </body>
+</html>
